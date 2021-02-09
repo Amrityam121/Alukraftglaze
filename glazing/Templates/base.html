@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block title%} {% endblock %}</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  {% load static %}
+  <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-dark bg-dark ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <a class="navbar-brand py-0" href="\"><img class="rounded-circle px-1" src="{% static 'images/Capture.PNG' %}"
+          style="
+            width: 60px; height: 40px;"><i><b>Alukcraft</b></i></a>
+      </a>
+
+      <!-- .............................................................................................. -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i><b>Home</b></i> <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class=" nav-link" href="/contacts"><b> </b><i><b>Contact </b></i>
+            <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class=" nav-link" href="/about"><b> </b><i><b>About</b></i>
+            <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class=" nav-link" href="/works"><b> </b><i><b>Projects</b></i>
+            <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class=" nav-link" href="/blog"><b> </b><i><b>Services</b></i>
+            <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <!-- ..................................................................................................... -->
+
+      {% if user.is_authenticated %}
+      <ul class="nav-item mb-0 mr-5">
+        <a class=" nav-link" href="\"><b> </b><i><b>Welcome {{request.user}}</b></i>
+        </a>
+      </ul>
+      <a href="\Logout">
+        <button class="btn btn-secondary" type="button">
+          <b><i> Logout </i></b>
+        </button>
+      </a>
+
+
+
+      {% else %}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-sign-in" aria-hidden="true"></i><i> signup</i>
+      </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="Signup" id="exampleModalLabel">Signup here</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <!-- signup Modal -->
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="\Signup" method="post">
+                <div class="form-group">
+                  <label for="Username">Username</label>
+                  <input type="text" class="form-control" id="Username" name="Username" required />
+                  <!-- Username -->
+                  <small class="form-text text-muted" aria-required="true">enter username.</small>
+                </div>
+                <div class="form-group">
+                  <label for="First">First name</label>
+                  <input type="text" class="form-control" id="First" name="First" required />
+                  <!-- first name -->
+                  <small class="form-text text-muted" aria-required="true">enter first name.</small>
+                </div>
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="Last">Last name</label>
+                  <input type="text" class="form-control" id="Last" name="Last" required />
+                  <!-- last name -->
+                  <small class="form-text text-muted" aria-required="true">enter last name.</small>
+                </div>
+                <div class="form-group">
+                  <label for="Email">Email Address</label>
+                  <input type="text" class="form-control" id="Email" name="Email" required />
+                  <!-- Email address -->
+                  <small class="form-text text-muted" aria-required="true">enter email.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="pass1">Password</label>
+                  <!-- password -->
+                  <input type="password" class="form-control" id="pass1" name="pass1" required />
+                  <small class="form-text text-muted" aria-required="true">enter password.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="pass2"> Confirm Password</label>
+                  <input type="password" class="form-control" id="pass2" name="pass2" required />
+                  <!-- confirm password -->
+                  <small class="form-text text-muted" aria-required="true">enter confirm password.</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  submit
+                </button>
+                <!-- submit button -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#exampleModal1">
+        <i class="fa fa-sign-in" aria-hidden="true"></i><i> Login </i>
+      </button>
+      <!-- Login Modal -->
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="Login" id="login">Login here</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="\Login" method="post">
+                <div class="form-group">
+                  <label for="Loginuser">Username</label>
+                  <input type="text" class="form-control" id="Loginuser" name="Loginuser" required />
+                  <!-- Username for login -->
+                </div>
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="Loginpass">Password</label>
+                  <input type="password" class="form-control" id="Loginpass" name="Loginpass" required />
+                  <!-- password for login -->
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  submit
+                </button>
+                <a class="float-right font-weight-bold" href="password_reset/"><i>Forgot password?</i></a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+  </nav>
+
+
+  {% block body %} {% endblock %}
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href=" {% static 'css/about.css' %}" />
+<section class="about_class">
+  <div class="row mx-auto">
+    <div class=" imgsettings col-md-4 col-lg-4 col-sm-4 ">
+      <img src="{% static 'images/alukraft3.jpg' %}" alt="..." class="rounded-circle" />
+    </div>
+    <div class=" side-text col-md-8 col-lg-8 col-sm-8">
+      <p>
+        <i class="fa fa-quote-left" aria-hidden="true"></i>
+        <i>
+          From many days their was a question that struck my mind again and
+          again , a simple one "What is it , that stops a person from reaching
+          his goals?"& "what is the thing that helps him to make it reality" I
+          was walking round my college campus today and all of sudden this
+          thought came to me. I leave it to readers with their own judgments.
+          Family is one thing that stops people from achieving their goals. Its
+          very rare that you will find parents supporting their children in
+          their dreams especially in Indian society. They are not wrong from
+          their own prospective. Every parent want their child with two things
+          respect and money.To a certain point i too agree with them But the
+          truth is they ruin his life by distancing him from what his child is
+          truly capable of . what are his arena in which he stands on his own
+          without any one to back him up. Additionally, relative are final blow
+          that a child will have "indirectly" while his boring future is
+          framed.</i>
+        <i class="fa fa-quote-right" aria-hidden="true"></i>
+      </p>
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}
+{% endblock %}
